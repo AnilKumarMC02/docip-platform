@@ -18,6 +18,8 @@ export const drivers = [
     mobile: "9876543211",
     city: "Bangalore",
     status: "Approved",
+
+    dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
   },
 
   {
@@ -27,6 +29,8 @@ export const drivers = [
     mobile: "9876543212",
     city: "Mysore",
     status: "Vehicle Pending",
+
+    dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
   },
 
   {
@@ -36,5 +40,7 @@ export const drivers = [
     mobile: "9876543213",
     city: "Hyderabad",
     status: "Documents Pending",
+
+    dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
   },
 ];

@@ -4,6 +4,8 @@ import DriverDetails from "../../features/support/components/DriverDetails";
 
 import AiReplyBox from "../../features/support/components/AiReplyBox";
 
+import SupportNotes from "../../features/support/components/SupportNotes";
+
 export default function SupportPage() {
   return (
     <main className="p-8 bg-slate-100 min-h-screen">
@@ -15,6 +17,8 @@ export default function SupportPage() {
         <DriverDetails />
 
         <AiReplyBox />
+
+        <SupportNotes />
       </div>
     </main>
   );
