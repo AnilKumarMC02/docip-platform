@@ -6,6 +6,9 @@ export const drivers = [
     mobile: "9876543210",
     city: "Pune",
     status: "Pending",
+
+    dashboardUrl:
+      "https://towneradmin.nimmavahana.com/dashboard/driver/view-drivers/view/adada1a5-4a87-4ea2-9447-64599b4b6611?page=1&limit=10&driver_code_like=PUNEA00068",
   },
 
   {
