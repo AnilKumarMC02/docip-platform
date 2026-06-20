@@ -3,15 +3,8 @@
 import { drivers } from "@/data/drivers";
 import { useState } from "react";
 
-type Driver = {
-  id: number;
-  name: string;
-  driverCode: string;
-  mobile: string;
-  city: string;
-  status: string;
-  dashboardUrl: string;
-};
+import { Driver } from "@/types/driver";
+import HealthBadge from "@/components/HealthBadge";
 
 export default function SearchDriver() {
   const [searchType, setSearchType] = useState("mobile");
@@ -116,6 +109,15 @@ export default function SearchDriver() {
               <p className="text-sm text-gray-500">Status</p>
 
               <p className="font-semibold">{result.status}</p>
+            </div>
+
+            <div>
+              <p className="text-sm text-gray-500">Health Score</p>
+
+              <p className="font-semibold">{result.healthScore}/100</p>
+            </div>
+            <div className="mt-6">
+              <HealthBadge healthScore={result.healthScore} />
             </div>
           </div>
 

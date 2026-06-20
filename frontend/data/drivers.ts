@@ -7,6 +7,8 @@ export const drivers = [
     city: "Pune",
     status: "Pending",
 
+    healthScore: 80,
+
     dashboardUrl:
       "https://towneradmin.nimmavahana.com/dashboard/driver/view-drivers/view/adada1a5-4a87-4ea2-9447-64599b4b6611?page=1&limit=10&driver_code_like=PUNEA00068",
   },
@@ -19,6 +21,8 @@ export const drivers = [
     city: "Bangalore",
     status: "Approved",
 
+    healthScore: 100,
+
     dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
   },
 
@@ -30,6 +34,7 @@ export const drivers = [
     city: "Mysore",
     status: "Vehicle Pending",
 
+    healthScore: 60,
     dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
   },
 
@@ -40,6 +45,8 @@ export const drivers = [
     mobile: "9876543213",
     city: "Hyderabad",
     status: "Documents Pending",
+
+    healthScore: 50,
 
     dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
   },
