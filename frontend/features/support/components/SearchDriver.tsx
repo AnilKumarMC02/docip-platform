@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import { Driver } from "@/types/driver";
 import HealthBadge from "@/components/HealthBadge";
+import ActionButton from "@/components/ActionButton";
+import DriverCard from "@/components/DriverCard";
 
 export default function SearchDriver() {
   const [searchType, setSearchType] = useState("mobile");
@@ -122,32 +124,27 @@ export default function SearchDriver() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-            <a
+            <ActionButton
+              label="Dashboard"
               href={result.dashboardUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center h-14 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-            >
-              Dashboard
-            </a>
+              color="bg-green-600 hover:bg-green-700"
+            />
 
-            <a
+            <ActionButton
+              label="📞 Call"
               href={`tel:${result.mobile}`}
-              className="flex items-center justify-center h-14 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            >
-              📞 Call
-            </a>
+              color="bg-blue-600 hover:bg-blue-700"
+            />
 
-            <a
+            <ActionButton
+              label="🟢 WhatsApp"
               href={`https://wa.me/91${result.mobile}`}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center h-14 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
-            >
-              🟢 WhatsApp
-            </a>
+              color="bg-green-500 hover:bg-green-600"
+            />
 
-            <button
+            <ActionButton
+              label="📋 Copy"
+              color="bg-indigo-600 hover:bg-indigo-700"
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(result.mobile);
@@ -157,10 +154,7 @@ export default function SearchDriver() {
                   alert("Copy failed");
                 }
               }}
-              className="flex items-center justify-center h-14 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-            >
-              📋 Copy
-            </button>
+            />
           </div>
 
           <div className="mt-8 border-t pt-4">
