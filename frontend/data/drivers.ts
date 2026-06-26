@@ -6,6 +6,11 @@ export const drivers = [
     mobile: "9876543210",
     city: "Pune",
     status: "Pending",
+    driverDocuments: false,
+
+    vehicleAdded: false,
+
+    vehicleDocuments: false,
 
     healthScore: 80,
 
@@ -20,6 +25,11 @@ export const drivers = [
     mobile: "9876543211",
     city: "Bangalore",
     status: "Approved",
+    driverDocuments: false,
+
+    vehicleAdded: false,
+
+    vehicleDocuments: false,
 
     healthScore: 100,
 
@@ -33,6 +43,11 @@ export const drivers = [
     mobile: "9876543212",
     city: "Mysore",
     status: "Vehicle Pending",
+    driverDocuments: false,
+
+    vehicleAdded: false,
+
+    vehicleDocuments: false,
 
     healthScore: 60,
     dashboardUrl: "https://towneradmin.nimmavahana.com/dashboard",
@@ -45,6 +60,11 @@ export const drivers = [
     mobile: "9876543213",
     city: "Hyderabad",
     status: "Documents Pending",
+    driverDocuments: false,
+
+    vehicleAdded: false,
+
+    vehicleDocuments: false,
 
     healthScore: 50,
 

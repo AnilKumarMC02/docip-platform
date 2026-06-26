@@ -38,6 +38,33 @@ export default function SearchDriver() {
 
     setResult(driver);
   };
+  const getApprovalStatus = (driver: Driver) => {
+    const missing = [
+      !driver.driverDocuments,
+      !driver.vehicleAdded,
+      !driver.vehicleDocuments,
+    ].filter(Boolean).length;
+
+    if (missing === 0) {
+      return {
+        text: "🟢 Ready for Approval",
+        color: "text-green-600",
+      };
+    }
+
+    if (missing === 3) {
+      return {
+        text: "🔴 Pending Approval",
+        color: "text-red-600",
+      };
+    }
+
+    return {
+      text: "🟡 Incomplete Profile",
+      color: "text-yellow-600",
+    };
+  };
+  <h3 className="text-2xl font-bold mb-6">Driver Found</h3>;
 
   return (
     <div className="bg-white rounded-xl shadow p-6">
@@ -85,7 +112,7 @@ export default function SearchDriver() {
       )}
 
       {result && (
-        <div className="mt-8 bg-green-50 rounded-xl shadow p-6">
+        <div className="mt-8 bg-white rounded-xl shadow-lg border border-gray-200 p-8">
           <h3 className="text-2xl font-bold mb-6">Driver Found</h3>
 
           <div className="grid grid-cols-2 gap-6">
@@ -138,7 +165,47 @@ export default function SearchDriver() {
 
             <ActionButton
               label="🟢 WhatsApp"
-              href={`https://wa.me/91${result.mobile}`}
+              href={`https://wa.me/91${result.mobile}?text=${encodeURIComponent(
+                !result.driverDocuments &&
+                  !result.vehicleAdded &&
+                  !result.vehicleDocuments
+                  ? `Hello,
+
+Your account approval is pending.
+
+Please complete the following:
+
+📄 Upload driver documents
+
+🚗 Add your vehicle
+
+🪪 Upload vehicle documents
+
+- Towner Support`
+                  : !result.driverDocuments
+                    ? `Hello,
+
+Please upload your driver documents.
+
+- Towner Support`
+                    : !result.vehicleAdded
+                      ? `Hello,
+
+Please add your vehicle details.
+
+- Towner Support`
+                      : !result.vehicleDocuments
+                        ? `Hello,
+
+Please upload vehicle documents.
+
+- Towner Support`
+                        : `Hello,
+
+Your profile is complete and ready for review.
+
+- Towner Support`,
+              )}`}
               color="bg-green-500 hover:bg-green-600"
             />
 
@@ -162,6 +229,140 @@ export default function SearchDriver() {
               📞 Driver Number:
               <strong> {result.mobile}</strong>
             </p>
+          </div>
+          <div className="mt-8 border-t pt-6">
+            <h3 className="text-xl font-bold mb-4">Approval Checklist</h3>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span>📄 Driver Documents</span>
+
+                <span>
+                  {result.driverDocuments ? "✅ Uploaded" : "❌ Missing"}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span>🚗 Vehicle Added</span>
+
+                <span>{result.vehicleAdded ? "✅ Added" : "❌ Not Added"}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span>🪪 Vehicle Documents</span>
+
+                <span>
+                  {result.vehicleDocuments ? "✅ Uploaded" : "❌ Missing"}
+                </span>
+              </div>
+            </div>
+            <div className="mt-8 border-t pt-6">
+              <h3 className="text-xl font-bold mb-4">💬 Suggested Reply</h3>
+
+              <div className="bg-gray-100 rounded-xl p-5">
+                <p className="whitespace-pre-line text-gray-700">
+                  {!result.driverDocuments &&
+                  !result.vehicleAdded &&
+                  !result.vehicleDocuments
+                    ? `Hello,
+
+Your account approval is pending.
+
+Please complete the following:
+
+📄 Upload driver documents
+
+🚗 Add your vehicle
+
+🪪 Upload vehicle documents
+
+- Towner Support`
+                    : !result.driverDocuments
+                      ? `Hello,
+
+Please upload your driver documents.
+
+- Towner Support`
+                      : !result.vehicleAdded
+                        ? `Hello,
+
+Please add your vehicle details.
+
+- Towner Support`
+                        : !result.vehicleDocuments
+                          ? `Hello,
+
+Please upload vehicle documents.
+
+- Towner Support`
+                          : `Hello,
+
+Your profile is complete and ready for review.
+
+- Towner Support`}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={async () => {
+                try {
+                  let reply = "";
+
+                  if (
+                    !result.driverDocuments &&
+                    !result.vehicleAdded &&
+                    !result.vehicleDocuments
+                  ) {
+                    reply = `Hello,
+
+Your account approval is pending.
+
+Please complete the following:
+
+📄 Upload driver documents
+
+🚗 Add your vehicle
+
+🪪 Upload vehicle documents
+
+- Towner Support`;
+                  } else if (!result.driverDocuments) {
+                    reply = `Hello,
+
+Please upload your driver documents.
+
+- Towner Support`;
+                  } else if (!result.vehicleAdded) {
+                    reply = `Hello,
+
+Please add your vehicle details.
+
+- Towner Support`;
+                  } else if (!result.vehicleDocuments) {
+                    reply = `Hello,
+
+Please upload vehicle documents.
+
+- Towner Support`;
+                  } else {
+                    reply = `Hello,
+
+Your profile is complete and ready for review.
+
+- Towner Support`;
+                  }
+
+                  await navigator.clipboard.writeText(reply);
+
+                  alert("Reply copied successfully!");
+                } catch {
+                  alert("Copy failed");
+                }
+              }}
+              className="mt-4 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition"
+            >
+              📋 Copy Reply
+            </button>
           </div>
         </div>
       )}

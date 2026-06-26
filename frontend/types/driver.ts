@@ -14,4 +14,9 @@ export type Driver = {
   healthScore: number;
 
   dashboardUrl: string;
+  driverDocuments: boolean;
+
+  vehicleAdded: boolean;
+
+  vehicleDocuments: boolean;
 };

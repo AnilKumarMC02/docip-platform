@@ -10,15 +10,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="flex">
-          <Sidebar />
+      <body className="bg-slate-100">
+        <Sidebar />
 
-          <div className="flex-1">
-            <Header />
+        <div className="ml-72 min-h-screen">
+          <Header />
 
-            {children}
-          </div>
+          <main className="p-6">{children}</main>
         </div>
       </body>
     </html>
